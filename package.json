@@ -15,11 +15,13 @@
     "@lucia-auth/adapter-sqlite": "^2.0.1",
     "@lucia-auth/oauth": "^3.5.0",
     "astro": "^3.5.4",
+    "drizzle-orm": "^0.29.0",
     "lucia": "^2.7.4",
     "typescript": "^5.2.2"
   },
   "devDependencies": {
     "@vanilla-extract/css": "^1.14.0",
-    "@vanilla-extract/vite-plugin": "^3.9.0"
+    "@vanilla-extract/vite-plugin": "^3.9.0",
+    "drizzle-kit": "^0.20.2"
   }
 }
