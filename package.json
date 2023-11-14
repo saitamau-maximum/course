@@ -7,7 +7,12 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "migrations:gen": "drizzle-kit generate:sqlite",
+    "migrations:up": "drizzle-kit up:sqlite",
+    "local:migrations:apply": "wrangler d1 migrations apply course-db --local",
+    "migrations:apply": "wrangler d1 migrations apply course-db",
+    "d1:new": "wrangler d1 create course-db"
   },
   "dependencies": {
     "@astrojs/check": "^0.3.1",
