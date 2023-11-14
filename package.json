@@ -13,5 +13,9 @@
     "@astrojs/check": "^0.3.1",
     "astro": "^3.5.4",
     "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "@vanilla-extract/css": "^1.14.0",
+    "@vanilla-extract/vite-plugin": "^3.9.0"
   }
 }
