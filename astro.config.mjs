@@ -6,8 +6,10 @@ import cloudflare from "@astrojs/cloudflare";
 // https://astro.build/config
 export default defineConfig({
   vite: {
-    plugins: [vanillaExtractPlugin()]
+    plugins: [vanillaExtractPlugin()],
   },
   output: "server",
-  adapter: cloudflare()
+  adapter: cloudflare({
+    runtime: { mode: "local" },
+  }),
 });
