@@ -1,5 +1,7 @@
 ---
 import "@/styles/global.css";
+import Header from "./Header.astro";
+import { styles } from "./BaseLayout.css";
 ---
 
 <html lang="en">
@@ -9,8 +11,13 @@ import "@/styles/global.css";
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>GitHub OAuth with Lucia</title>
+
+    <script src="/scripts/theme.js" is:inline></script>
   </head>
   <body>
-    <slot />
+    <Header />
+    <main class={styles.main}>
+      <slot />
+    </main>
   </body>
 </html>

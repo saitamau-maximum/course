@@ -1,0 +1,30 @@
+---
+import { styles } from "./Header.css";
+import ThemeSwitch from "./ThemeSwitch.astro";
+
+const session = await Astro.locals.auth.validate();
+---
+
+<header class={styles.container}>
+  <a href="/">
+    <img src="/assets/maximum.svg" alt="Maximum Logo" />
+  </a>
+  <div class={styles.sideContainer}>
+    <nav class={styles.nav}>
+      <a href="/" class={styles.navLink}>Home</a>
+      <a href="/course" class={styles.navLink}>Course</a>
+    </nav>
+    {
+      session ? (
+        <img
+          src={session.user.githubImageUri}
+          alt={session.user.githubUsername}
+          class={styles.avatar}
+        />
+      ) : (
+        <a href="/login">Login</a>
+      )
+    }
+    <ThemeSwitch />
+  </div>
+</header>

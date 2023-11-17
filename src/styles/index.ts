@@ -18,5 +18,6 @@ export const constants = {
   },
   size: {
     headerMaxWidth: "1200px",
+    contentMaxWidth: "1200px",
   },
 };
