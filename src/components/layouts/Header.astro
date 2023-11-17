@@ -1,6 +1,7 @@
 ---
 import { styles } from "./Header.css";
 import ThemeSwitch from "./ThemeSwitch.astro";
+import { AvatarDropdown } from "./AvatarDropdown";
 
 const session = await Astro.locals.auth.validate();
 ---
@@ -16,13 +17,9 @@ const session = await Astro.locals.auth.validate();
     </nav>
     {
       session ? (
-        <img
-          src={session.user.githubImageUri}
-          alt={session.user.githubUsername}
-          class={styles.avatar}
-        />
+        <AvatarDropdown user={session.user} client:load />
       ) : (
-        <a href="/login">Login</a>
+        <a href="/login/github">Login</a>
       )
     }
     <ThemeSwitch />

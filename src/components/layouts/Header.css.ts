@@ -30,9 +30,4 @@ export const styles = {
       color: vars.color.gray[11],
     },
   }),
-  avatar: style({
-    width: vars.spacing[10],
-    height: vars.spacing[10],
-    borderRadius: "50%",
-  }),
 };
