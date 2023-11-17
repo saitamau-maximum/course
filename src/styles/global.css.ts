@@ -12,6 +12,7 @@ globalStyle("body", {
 
   minHeight: "100dvh",
   height: "100%",
+  lineHeight: 1,
 });
 
 globalStyle("html", {

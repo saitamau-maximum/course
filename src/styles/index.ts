@@ -1,4 +1,4 @@
-import { vars as vs } from "@/styles/theme.css";
+import { _vars as vs } from "@/styles/theme.css";
 
 export const vars = {
   ...vs,
@@ -8,5 +8,15 @@ export const vars = {
         .map((property) => `${property} 0.3s ease-in-out`)
         .join(", ");
     },
+  },
+};
+
+export const constants = {
+  breakpoint: {
+    mobile: "768px",
+    tablet: "1024px",
+  },
+  size: {
+    headerMaxWidth: "1200px",
   },
 };

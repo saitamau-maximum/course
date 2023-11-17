@@ -85,15 +85,15 @@ const fontVars = createGlobalTheme(":root", {
 
 const spacingVars = createGlobalTheme(":root", {
   none: "0",
-  1: "0.25rem",
-  2: "0.5rem",
-  3: "0.75rem",
-  4: "1rem",
-  6: "1.5rem",
-  8: "2rem",
-  10: "2.5rem",
-  12: "3rem",
-  16: "4rem",
+  1: "4px",
+  2: "8px",
+  3: "12px",
+  4: "16px",
+  6: "24px",
+  8: "32px",
+  10: "40px",
+  12: "48px",
+  16: "64px",
   full: "100%",
 });
 
@@ -106,20 +106,14 @@ const zIndexVars = createGlobalTheme(":root", {
   overlay: "10000",
 });
 
-const breakpointVars =  {
-  mobile: "768px",
-  tablet: "1024px",
-};
+const lineHeightVars = createGlobalTheme(":root", {
+  paragraph: "1.5",
+});
 
-
-/**
- * @deprecated 
- * styles/theme.cssではなく、styles/indexをimportしてください
- */
-export const vars = {
+export const _vars = {
   color: colorVars,
   font: fontVars,
   spacing: spacingVars,
   zIndex: zIndexVars,
-  breakpoint: breakpointVars,
+  lineHeight: lineHeightVars,
 };

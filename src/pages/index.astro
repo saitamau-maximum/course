@@ -1,25 +1,16 @@
 ---
-import "../app.css";
+import BaseLayout from "@/components/layouts/BaseLayout.astro";
 
 const session = await Astro.locals.auth.validate();
 if (!session) return Astro.redirect("/login", 302);
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>GitHub OAuth with Lucia</title>
-  </head>
-  <body>
-    <h1>Profile</h1>
-    <p>User id: {session.user.userId}</p>
-    <p>GitHub username: {session.user.githubUsername}</p>
-    <img src={session.user.githubImageUri} alt="Avatar" />
-    <form method="post" action="/logout">
-      <input type="submit" value="Sign out" />
-    </form>
-  </body>
-</html>
+<BaseLayout>
+  <h1>Profile</h1>
+  <p>User id: {session.user.userId}</p>
+  <p>GitHub username: {session.user.githubUsername}</p>
+  <img src={session.user.githubImageUri} alt="Avatar" />
+  <form method="post" action="/logout">
+    <input type="submit" value="Sign out" />
+  </form>
+</BaseLayout>
