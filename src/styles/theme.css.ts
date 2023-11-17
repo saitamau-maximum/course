@@ -32,7 +32,8 @@ createGlobalTheme(".light", colorVars, {
     12: "hsl(134 44% 34.0%)",
   },
   gradient: {
-    primary: "linear-gradient(291deg, #63C178 0%, #34AA8E 100%))",
+    from: "#63C178",
+    to: "#34AA8E",
   },
 });
 
@@ -66,7 +67,8 @@ createGlobalTheme(".dark", colorVars, {
     12: "hsl(134 44% 93.0%)",
   },
   gradient: {
-    primary: "linear-gradient(291deg, #34AA8E 0%, #63C178 100%))",
+    from: "#34AA8E",
+    to: "#63C178",
   },
 });
 
@@ -107,6 +109,7 @@ const zIndexVars = createGlobalTheme(":root", {
 });
 
 const lineHeightVars = createGlobalTheme(":root", {
+  label: "1",
   paragraph: "1.5",
 });
 

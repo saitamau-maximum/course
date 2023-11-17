@@ -31,7 +31,7 @@ export const DropdownItem = (
     <DropdownMenu.Item {...rest}>
       <button className={styles.menuItem} onClick={handleOnClick}>
         {icon && <span className={styles.icon}>{icon}</span>}
-        {props.children}
+        <span className={styles.label}>{props.children}</span>
       </button>
     </DropdownMenu.Item>
   );

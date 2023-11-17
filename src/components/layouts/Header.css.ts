@@ -26,8 +26,29 @@ export const styles = {
     textDecoration: "none",
     transition: vars.transition.normal("color"),
 
-    ":hover": {
-      color: vars.color.gray[11],
+    "@media": {
+      "(hover: hover)": {
+        ":hover": {
+          color: vars.color.gray[11],
+        },
+      },
+    },
+  }),
+  loginLink: style({
+    color: vars.color.gray[1],
+    background: `linear-gradient(to bottom right, ${vars.color.gradient.from}, ${vars.color.gradient.to})`,
+    borderRadius: vars.spacing[2],
+    padding: `${vars.spacing[2]} ${vars.spacing[3]}`,
+    margin: `0 ${vars.spacing[3]}`,
+    textDecoration: "none",
+    transition: vars.transition.normal("opacity"),
+
+    "@media": {
+      "(hover: hover)": {
+        ":hover": {
+          opacity: 0.8,
+        },
+      },
     },
   }),
 };

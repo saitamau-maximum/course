@@ -14,14 +14,15 @@ const session = await Astro.locals.auth.validate();
     <nav class={styles.nav}>
       <a href="/" class={styles.navLink}>Home</a>
       <a href="/course" class={styles.navLink}>Course</a>
+      {
+        !session && (
+          <a class={styles.loginLink} href="/login/github">
+            Login
+          </a>
+        )
+      }
     </nav>
-    {
-      session ? (
-        <AvatarDropdown user={session.user} client:load />
-      ) : (
-        <a href="/login/github">Login</a>
-      )
-    }
+    {session && <AvatarDropdown user={session.user} client:load />}
     <ThemeSwitch />
   </div>
 </header>

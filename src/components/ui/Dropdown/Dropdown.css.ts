@@ -58,14 +58,13 @@ export const styles = {
     willChange: "transform, opacity",
   }),
   menuItem: style({
-
     fontSize: vars.font.size.sm,
     color: vars.color.gray[12],
     borderRadius: vars.spacing[2],
     display: "flex",
     alignItems: "center",
     gap: vars.spacing[2],
-    padding: `${vars.spacing[2]} ${vars.spacing[4]}`,
+    padding: `${vars.spacing[3]} ${vars.spacing[4]}`,
     userSelect: "none",
     cursor: "pointer",
     outline: "none",
@@ -89,6 +88,9 @@ export const styles = {
     marginRight: vars.spacing[2],
     color: vars.color.gray[11],
     display: "contents",
+  }),
+  label: style({
+    lineHeight: vars.lineHeight.label,
   }),
   separator: style({
     height: 1,

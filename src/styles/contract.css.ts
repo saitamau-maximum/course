@@ -30,6 +30,7 @@ export const colorVars = createThemeContract({
     12: null,
   },
   gradient: {
-    primary: null,
+    from: null,
+    to: null,
   },
 });
