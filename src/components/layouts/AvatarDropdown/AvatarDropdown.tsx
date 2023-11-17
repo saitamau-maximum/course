@@ -36,7 +36,9 @@ export const AvatarDropdown = ({ user }: Props) => {
         icon={<Logout />}
         onClick={() => {
           sendLogout();
-          window.location.reload();
+          setTimeout(() => {
+            window.location.reload();
+          }, 500);
         }}
       >
         ログアウト
