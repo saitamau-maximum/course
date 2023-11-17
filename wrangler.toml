@@ -1,4 +1,8 @@
+name = "maximum-course"
+compatibility_date = "2023-06-14"
+
 [[d1_databases]]
 binding = "DB"
 database_name = "course-db"
 database_id = "e06fe5b6-ec3a-4f18-96a8-5b94886da868"
+preview_database_id = "DB"
