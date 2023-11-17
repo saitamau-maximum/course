@@ -6,5 +6,6 @@ export const styles = {
     width: vars.spacing[10],
     height: vars.spacing[10],
     borderRadius: "50%",
+    display: "block",
   }),
 };

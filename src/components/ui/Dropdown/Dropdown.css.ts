@@ -102,7 +102,7 @@ export const styles = {
     background: "transparent",
     padding: 0,
     cursor: "pointer",
-    outline: "none",
+    borderRadius: "50%",
   }),
 };
 
