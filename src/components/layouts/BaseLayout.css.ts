@@ -5,7 +5,7 @@ export const styles = {
   main: style({
     display: "flex",
     flexDirection: "column",
-    minHeight: "100dvh",
+    minHeight: `calc(100dvh - ${constants.size.headerHeight})`,
     maxWidth: constants.size.contentMaxWidth,
     width: vars.spacing.full,
     margin: "0 auto",

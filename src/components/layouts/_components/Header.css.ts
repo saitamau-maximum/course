@@ -7,7 +7,7 @@ export const styles = {
     justifyContent: "space-between",
     alignItems: "center",
     padding: `0 ${vars.spacing[4]}`,
-    height: vars.spacing[16],
+    height: constants.size.headerHeight,
     maxWidth: constants.size.headerMaxWidth,
     margin: "0 auto",
   }),

@@ -17,6 +17,7 @@ export const constants = {
     tablet: "1024px",
   },
   size: {
+    headerHeight: "64px",
     headerMaxWidth: "1200px",
     contentMaxWidth: "1200px",
   },
