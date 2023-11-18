@@ -20,3 +20,7 @@ function initTheme() {
 }
 
 initTheme();
+
+document.addEventListener("astro:after-swap", () => {
+  initTheme();
+});
