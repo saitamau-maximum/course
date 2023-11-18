@@ -1,0 +1,42 @@
+---
+import { getCourse, getIndexCourses } from "@/content/_repository";
+import BaseLayout from "@/components/layouts/BaseLayout.astro";
+import type { CollectionEntry } from "astro:content";
+import MdContents from "@/components/document/MdContents.astro";
+
+export async function getStaticPaths() {
+  const courses = await getIndexCourses();
+  const courseWithSections = await Promise.all(
+    courses.map(async (course) => ({
+      ...course,
+      sections: await getCourse(course.slug),
+    }))
+  );
+
+  return courseWithSections.flatMap((course) =>
+    course.sections.map((section) => ({
+      params: {
+        course_slug: course.slug,
+        section_slug: section.slug,
+      },
+      props: {
+        ...section,
+      },
+    }))
+  );
+}
+
+type Props = CollectionEntry<"course">;
+
+const { data, render } = Astro.props;
+const { Content } = await render();
+
+export const prerender = true;
+---
+
+<BaseLayout>
+  <h1>{data.title}</h1>
+  <MdContents>
+    <Content />
+  </MdContents>
+</BaseLayout>

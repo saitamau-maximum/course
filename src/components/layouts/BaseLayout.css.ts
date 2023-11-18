@@ -10,5 +10,6 @@ export const styles = {
     width: vars.spacing.full,
     margin: "0 auto",
     padding: `0 ${vars.spacing[4]}`,
+    boxSizing: "border-box",
   }),
 };

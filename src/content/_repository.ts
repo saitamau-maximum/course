@@ -1,4 +1,4 @@
-import { CONTENT_INDEX_MATCHER } from "@/config";
+import { CONTENT_INDEX_MATCHER, CONTENT_SECTION_MATCHER } from "@/config";
 import { getCollection } from "astro:content";
 
 export const getIndexCourses = async () => {
@@ -15,13 +15,13 @@ export const getIndexCourses = async () => {
 export const getCourse = async (slug: string) => {
   const allSections = await getCollection("course");
   const sections = allSections.filter(
-    (item) => item.id.replace(CONTENT_INDEX_MATCHER, "$2") === slug
+    (item) => item.id.replace(CONTENT_SECTION_MATCHER, "$2") === slug
   );
   const orderSortedSections = sections.sort(
     (a, b) => (a.data.order || 0) - (b.data.order || 0)
   );
   return orderSortedSections.map((item) => ({
     ...item,
-    slug: item.id.replace(CONTENT_INDEX_MATCHER, "$2"),
+    slug: item.id.replace(CONTENT_SECTION_MATCHER, "$3"),
   }));
 };
