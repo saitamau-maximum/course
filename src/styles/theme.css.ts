@@ -110,7 +110,7 @@ const zIndexVars = createGlobalTheme(":root", {
 
 const lineHeightVars = createGlobalTheme(":root", {
   label: "1",
-  paragraph: "1.5",
+  paragraph: "1.8",
 });
 
 export const _vars = {

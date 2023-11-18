@@ -1,0 +1,62 @@
+---
+import { styles } from "./MdContents.css";
+---
+
+<div class={styles.contents}>
+  <slot />
+</div>
+
+<link href="/one-light.css" rel="stylesheet" />
+<link href="/one-dark.css" rel="stylesheet" />
+
+<script>
+  const initCodeblock = () => {
+    const codeCopyButtons = document.querySelectorAll(".code-copy-button");
+    codeCopyButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const code = button.parentElement?.querySelector("code");
+        if (!code) return;
+        button.classList.add("copied");
+        navigator.clipboard.writeText(code.innerText);
+        setTimeout(() => {
+          button.classList.remove("copied");
+        }, 1000);
+      });
+    });
+  };
+
+  const initAnnotationBlock = () => {
+    const annotationBlocks = document.querySelectorAll(".annotation-block");
+    annotationBlocks.forEach((block) => {
+      const findAndReplace = (node: Node) => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          const text = node.textContent;
+          const match = text?.match(/\[\!(.+?)\]/);
+          if (match) {
+            const span = document.createElement("span");
+            span.classList.add("annotation");
+            span.textContent = match[1];
+            node.parentNode?.replaceChild(span, node);
+          }
+        } else {
+          node.childNodes.forEach((child) => {
+            findAndReplace(child);
+          });
+        }
+      };
+
+      findAndReplace(block);
+    });
+  };
+
+  const init = () => {
+    initCodeblock();
+    initAnnotationBlock();
+  };
+
+  init();
+
+  document.addEventListener("astro:after-swap", () => {
+    init();
+  });
+</script>

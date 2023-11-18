@@ -1,6 +1,7 @@
 import { globalStyle } from "@vanilla-extract/css";
 
 import { colorVars } from "./contract.css";
+import { vars } from ".";
 
 globalStyle("body", {
   backgroundColor: colorVars.gray[2],
@@ -11,7 +12,10 @@ globalStyle("body", {
 
   minHeight: "100dvh",
   height: "100%",
-  lineHeight: 1,
+});
+
+globalStyle("p, h1, h2, h3, h4, h5, h6, ul, ol, li", {
+  lineHeight: vars.lineHeight.paragraph,
 });
 
 globalStyle("html", {
