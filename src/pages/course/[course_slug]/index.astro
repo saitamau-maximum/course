@@ -3,24 +3,30 @@ import { getIndexCourses } from "@/content/_repository";
 import BaseLayout from "@/components/layouts/BaseLayout.astro";
 import type { CollectionEntry } from "astro:content";
 import MdContents from "@/components/document/MdContents.astro";
+import { CANONICALS } from "@/config";
 
 export async function getStaticPaths() {
   const courses = await getIndexCourses();
   return courses.map((course) => ({
     params: { course_slug: course.slug },
-    props: { ...course },
+    props: { ...course, slugs: { course_slug: course.slug } },
   }));
 }
 
-type Props = CollectionEntry<"course">;
+type Props = CollectionEntry<"course"> & {
+  slugs: { course_slug: string };
+};
 
-const { data, render } = Astro.props;
+const { data, render, slugs } = Astro.props;
 const { Content } = await render();
 
 export const prerender = true;
 ---
 
-<BaseLayout>
+<BaseLayout
+  title={data.title}
+  canonical={CANONICALS.COURSE_DETAIL_TOP(slugs.course_slug)}
+>
   <h1>{data.title}</h1>
   <MdContents>
     <Content />

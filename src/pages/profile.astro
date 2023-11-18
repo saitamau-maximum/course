@@ -1,7 +1,13 @@
 ---
 import BaseLayout from "@/components/layouts/BaseLayout.astro";
+import { CANONICALS } from "@/config";
+
+const session = await Astro.locals.auth.validate();
+if (session) return Astro.redirect("/", 302);
+
+const title = `${session.user.githubUsername}さんのプロフィール`;
 ---
 
-<BaseLayout>
+<BaseLayout title={title} canonical={CANONICALS.PROFILE}>
   <h1>Profile</h1>
 </BaseLayout>

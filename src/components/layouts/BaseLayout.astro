@@ -1,25 +1,16 @@
 ---
 import "@/styles/global.css";
+import Head, { type Props as HeadProps } from "./_components/Head.astro";
 import Header from "./_components/Header.astro";
 import { styles } from "./BaseLayout.css";
+
+export type Props = HeadProps;
+
+const { title, description, canonical } = Astro.props;
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>GitHub OAuth with Lucia</title>
-
-    <script src="/scripts/theme.js" is:inline></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600&family=Noto+Sans:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-  </head>
+<html lang="ja">
+  <Head title={title} description={description} canonical={canonical} />
   <body>
     <Header />
     <main class={styles.main}>
