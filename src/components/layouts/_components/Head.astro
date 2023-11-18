@@ -1,5 +1,6 @@
 ---
 import { SITE_TITLE } from "@/config";
+import { ViewTransitions } from "astro:transitions";
 
 export interface Props {
   title?: string;
@@ -27,4 +28,5 @@ const computedTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE;
     href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600&family=Noto+Sans:wght@400;600&display=swap"
     rel="stylesheet"
   />
+  <ViewTransitions />
 </head>

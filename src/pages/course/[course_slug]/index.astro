@@ -4,6 +4,7 @@ import BaseLayout from "@/components/layouts/BaseLayout.astro";
 import type { CollectionEntry } from "astro:content";
 import MdContents from "@/components/document/MdContents.astro";
 import { CANONICALS } from "@/config";
+import WithSideLayout from "@/components/layouts/WithSideLayout.astro";
 
 export async function getStaticPaths() {
   const courses = await getIndexCourses();
@@ -23,12 +24,13 @@ const { Content } = await render();
 export const prerender = true;
 ---
 
-<BaseLayout
+<WithSideLayout
   title={data.title}
   canonical={CANONICALS.COURSE_DETAIL_TOP(slugs.course_slug)}
 >
+  <div slot="left">a</div>
   <h1>{data.title}</h1>
   <MdContents>
     <Content />
   </MdContents>
-</BaseLayout>
+</WithSideLayout>

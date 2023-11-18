@@ -20,5 +20,6 @@ export const constants = {
     headerHeight: "64px",
     headerMaxWidth: "1200px",
     contentMaxWidth: "1200px",
+    leftPanelWidth: "240px",
   },
 };

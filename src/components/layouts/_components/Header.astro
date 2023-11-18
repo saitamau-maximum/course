@@ -2,14 +2,13 @@
 import { styles } from "./Header.css";
 import ThemeSwitch from "./ThemeSwitch.astro";
 import { AvatarDropdown } from "./AvatarDropdown";
+import Logo from "./Logo.astro";
 
 const session = await Astro.locals.auth.validate();
 ---
 
 <header class={styles.container}>
-  <a href="/">
-    <img src="/assets/maximum.svg" alt="Maximum Logo" />
-  </a>
+  <Logo />
   <div class={styles.sideContainer}>
     <nav class={styles.nav}>
       <a href="/" class={styles.navLink}>Home</a>
