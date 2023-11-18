@@ -41,8 +41,6 @@ type Props = CollectionEntry<"course"> & {
 
 const { data, render, slugs } = Astro.props;
 const { Content } = await render();
-
-export const prerender = true;
 ---
 
 <WithSideLayout
