@@ -1,5 +1,6 @@
 ---
 title: Gitとは
+order: 1
 ---
 
 ## Gitとは

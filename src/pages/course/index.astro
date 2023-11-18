@@ -1,7 +1,22 @@
 ---
 import BaseLayout from "@/components/layouts/BaseLayout.astro";
+import { getIndexCourses } from "@/content/_repository";
+import { CONTENT_INDEX_MATCHER } from "@/config";
+
+const course = await getIndexCourses();
 ---
 
 <BaseLayout>
   <h1>Course 一覧</h1>
+  <ul>
+    {
+      course.map((course) => (
+        <li>
+          <a href={`/course/${course.id.replace(CONTENT_INDEX_MATCHER, "$2")}`}>
+            {course.data.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
 </BaseLayout>

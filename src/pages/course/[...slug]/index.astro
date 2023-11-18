@@ -1,0 +1,24 @@
+---
+import { getIndexCourses } from "@/content/_repository";
+import BaseLayout from "@/components/layouts/BaseLayout.astro";
+import type { CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+  const courses = await getIndexCourses();
+  return courses.map((course) => ({
+    params: { slug: course.slug },
+    props: { ...course },
+  }));
+}
+
+type Props = CollectionEntry<"course">;
+
+const { render } = Astro.props;
+const { Content } = await render();
+
+export const prerender = true;
+---
+
+<BaseLayout>
+  <Content />
+</BaseLayout>
