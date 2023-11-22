@@ -2,25 +2,16 @@
 import { styles } from "./Header.css";
 import ThemeSwitch from "./ThemeSwitch.astro";
 import { AvatarDropdown } from "./AvatarDropdown";
-import Logo from "./Logo.astro";
+import LogoLink from "./LogoLink.astro";
+import Navigation from "./Navigation.astro";
 
 const session = await Astro.locals.auth.validate();
 ---
 
 <header class={styles.container}>
-  <Logo />
+  <LogoLink />
   <div class={styles.sideContainer}>
-    <nav class={styles.nav}>
-      <a href="/" class={styles.navLink}>Home</a>
-      <a href="/course" class={styles.navLink}>Course</a>
-      {
-        !session && (
-          <a class={styles.loginLink} href="/login/github">
-            Login
-          </a>
-        )
-      }
-    </nav>
+    <Navigation />
     {session && <AvatarDropdown user={session.user} client:load />}
     <ThemeSwitch />
   </div>

@@ -10,4 +10,5 @@ export const CANONICALS = {
   COURSE_DETAIL: (courseSlug: string, sectionSlug: string) =>
     `/course/${courseSlug}/${sectionSlug}`,
   PROFILE: "/profile",
+  LOGIN_GITHUB: "/login/github",
 };

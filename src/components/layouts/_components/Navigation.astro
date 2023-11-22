@@ -1,0 +1,18 @@
+---
+import { CANONICALS } from "@/config";
+import { styles } from "./Navigation.css";
+
+const session = await Astro.locals.auth.validate();
+---
+
+<nav class={styles.nav}>
+  <a href="/" class={styles.navLink}>Home</a>
+  <a href="/course" class={styles.navLink}>Course</a>
+  {
+    !session && (
+      <a class={styles.loginLink} href={CANONICALS.LOGIN_GITHUB}>
+        Login
+      </a>
+    )
+  }
+</nav>
