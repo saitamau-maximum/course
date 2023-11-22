@@ -1,54 +1,22 @@
 ---
-import { getCourse, getIndexCourses } from "@/content/_repository";
-import BaseLayout from "@/components/layouts/BaseLayout.astro";
-import type { CollectionEntry } from "astro:content";
+import { getSectionBySlug } from "@/content/_repository";
 import MdContents from "@/components/document/MdContents.astro";
 import { CANONICALS } from "@/config";
 import WithSideLayout from "@/components/layouts/WithSideLayout.astro";
 
-export async function getStaticPaths() {
-  const courses = await getIndexCourses();
-  const courseWithSections = await Promise.all(
-    courses.map(async (course) => ({
-      ...course,
-      sections: await getCourse(course.slug),
-    }))
-  );
-
-  return courseWithSections.flatMap((course) =>
-    course.sections.map((section) => ({
-      params: {
-        course_slug: course.slug,
-        section_slug: section.slug,
-      },
-      props: {
-        ...section,
-        slugs: {
-          course_slug: course.slug,
-          section_slug: section.slug,
-        },
-      },
-    }))
-  );
-}
-
-type Props = CollectionEntry<"course"> & {
-  slugs: {
-    course_slug: string;
-    section_slug: string;
-  };
-};
-
-const { data, render, slugs } = Astro.props;
-const { Content } = await render();
+const { course_slug, section_slug } = Astro.params;
+if (!course_slug || !section_slug) return Astro.redirect("/");
+const section = await getSectionBySlug(course_slug, section_slug);
+if (!section) return Astro.redirect("/");
+const { Content } = await section.render();
 ---
 
 <WithSideLayout
-  title={data.title}
-  canonical={CANONICALS.COURSE_DETAIL(slugs.course_slug, slugs.section_slug)}
+  title={section.data.title}
+  canonical={CANONICALS.COURSE_DETAIL(course_slug, section_slug)}
 >
   <div slot="left">aaa</div>
-  <h1>{data.title}</h1>
+  <h1>{section.data.title}</h1>
   <MdContents>
     <Content />
   </MdContents>

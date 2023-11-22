@@ -12,16 +12,23 @@ export const getIndexCourses = async () => {
   }));
 };
 
-export const getCourse = async (slug: string) => {
-  const allSections = await getCollection("course");
-  const sections = allSections.filter(
-    (item) => item.id.replace(CONTENT_SECTION_MATCHER, "$2") === slug
+export const getCourseBySlug = async (slug: string) => {
+  const allCourseSections = await getCollection("course");
+  const course = allCourseSections.find(
+    (item) => item.id.replace(CONTENT_INDEX_MATCHER, "$2") === slug
   );
-  const orderSortedSections = sections.sort(
-    (a, b) => (a.data.order || 0) - (b.data.order || 0)
+  return course;
+};
+
+export const getSectionBySlug = async (
+  courseSlug: string,
+  sectionSlug: string
+) => {
+  const allCourseSections = await getCollection("course");
+  const section = allCourseSections.find(
+    (item) =>
+      item.id.replace(CONTENT_SECTION_MATCHER, "$2") === courseSlug &&
+      item.id.replace(CONTENT_SECTION_MATCHER, "$3") === sectionSlug
   );
-  return orderSortedSections.map((item) => ({
-    ...item,
-    slug: item.id.replace(CONTENT_SECTION_MATCHER, "$3"),
-  }));
+  return section;
 };

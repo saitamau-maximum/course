@@ -11,5 +11,8 @@ export const styles = {
     flexDirection: "column",
     alignItems: "center",
     gap: vars.spacing[4],
+    position: "fixed",
+    top: 0,
+    left: 0,
   }),
 };

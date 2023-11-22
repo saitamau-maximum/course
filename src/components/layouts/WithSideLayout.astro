@@ -13,10 +13,10 @@ const { title, description, canonical } = Astro.props;
 <html lang="ja">
   <Head title={title} description={description} canonical={canonical} />
   <body>
+    <LeftPanel>
+      <slot name="left" />
+    </LeftPanel>
     <div class={styles.container}>
-      <LeftPanel>
-        <slot name="left" />
-      </LeftPanel>
       <main class={styles.main}>
         <slot />
       </main>

@@ -4,6 +4,7 @@ import { style } from "@vanilla-extract/css";
 export const styles = {
   container: style({
     display: "flex",
+    marginLeft: constants.size.leftPanelWidth,
   }),
   main: style({
     display: "flex",
