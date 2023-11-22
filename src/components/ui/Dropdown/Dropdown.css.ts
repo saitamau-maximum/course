@@ -95,7 +95,7 @@ export const styles = {
   separator: style({
     height: 1,
     backgroundColor: vars.color.gray[4],
-    margin: `${vars.spacing[2]} 0`,
+    margin: `${vars.spacing[1]} 0`,
   }),
   triggerButton: style({
     border: "none",
