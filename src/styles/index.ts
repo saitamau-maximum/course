@@ -19,7 +19,7 @@ export const constants = {
   size: {
     headerHeight: "64px",
     headerMaxWidth: "1200px",
-    contentMaxWidth: "1200px",
+    contentMaxWidth: "1024px",
     leftPanelWidth: "240px",
   },
 };
