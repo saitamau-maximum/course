@@ -15,4 +15,9 @@ export const styles = {
     top: 0,
     left: 0,
   }),
+  footer: style({
+    width: "100%",
+    position: "absolute",
+    bottom: 0,
+  }),
 };

@@ -6,4 +6,7 @@ import Logo from "./Logo.astro";
 <div class={styles.container}>
   <Logo />
   <slot />
+  <div class={styles.footer}>
+    <slot name="footer" />
+  </div>
 </div>

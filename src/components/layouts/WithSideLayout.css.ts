@@ -16,4 +16,12 @@ export const styles = {
     padding: `0 ${vars.spacing[4]}`,
     boxSizing: "border-box",
   }),
+  footerActions: style({
+    display: "flex",
+    alignItems: "center",
+    gap: vars.spacing[4],
+    justifyContent: "space-between",
+    padding: vars.spacing[4],
+    boxSizing: "border-box",
+  }),
 };

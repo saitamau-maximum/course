@@ -1,13 +1,15 @@
 ---
 import "@/styles/global.css";
 import Head, { type Props as HeadProps } from "./_components/Head.astro";
-import Header from "./_components/Header.astro";
 import { styles } from "./WithSideLayout.css";
 import LeftPanel from "./_components/LeftPanel.astro";
+import { AvatarDropdown } from "./_components/AvatarDropdown";
+import ThemeSwitch from "./_components/ThemeSwitch.astro";
 
 export type Props = HeadProps;
 
 const { title, description, canonical } = Astro.props;
+const session = await Astro.locals.auth.validate();
 ---
 
 <html lang="ja">
@@ -15,6 +17,12 @@ const { title, description, canonical } = Astro.props;
   <body>
     <LeftPanel>
       <slot name="left" />
+      <div slot="footer">
+        <div class={styles.footerActions}>
+          {session && <AvatarDropdown user={session.user} client:load />}
+          <ThemeSwitch />
+        </div>
+      </div>
     </LeftPanel>
     <div class={styles.container}>
       <main class={styles.main}>
