@@ -1,0 +1,42 @@
+---
+import { styles } from "./SectionList.css";
+import { CANONICALS } from "@/config";
+import type { CollectionEntry } from "astro:content";
+import { clsx } from "@/libs/clsx";
+
+interface Props {
+  sections: CollectionEntry<"course">[];
+  courseSlug: string;
+}
+
+const { sections, courseSlug } = Astro.props;
+
+const removeCourseFromSlug = (slug: string) => {
+  const parts = slug.split("/");
+  return parts.filter((part) => part !== courseSlug).join("/");
+};
+
+const url = Astro.url;
+const getSectionLink = (sectionSlug: string) =>
+  CANONICALS.COURSE_DETAIL(courseSlug, removeCourseFromSlug(sectionSlug));
+---
+
+<div class={styles.container}>
+  {
+    sections.map((section, i) => (
+      <a
+        href={getSectionLink(section.slug)}
+        class={clsx(
+          styles.sectionLink,
+          getSectionLink(section.slug) === url.pathname &&
+            styles.sectionLinkActive
+        )}
+      >
+        <span class={styles.sectionNumber}>
+          {String(i + 1).padStart(2, "0")}
+        </span>
+        {section.data.title}
+      </a>
+    ))
+  }
+</div>

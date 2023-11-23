@@ -12,6 +12,16 @@ export const getIndexCourses = async () => {
   }));
 };
 
+export const getSectionsBySlug = async (courseSlug: string) => {
+  const allCourseSections = await getCollection("course");
+  const sections = allCourseSections.filter(
+    (item) =>
+      item.id.replace(CONTENT_SECTION_MATCHER, "$2") === courseSlug &&
+      item.id.replace(CONTENT_SECTION_MATCHER, "$3") !== "index"
+  );
+  return sections;
+};
+
 export const getCourseBySlug = async (slug: string) => {
   const allCourseSections = await getCollection("course");
   const course = allCourseSections.find(

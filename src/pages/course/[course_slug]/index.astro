@@ -1,26 +1,25 @@
 ---
-import { getCourseBySlug } from "@/content/_repository";
-import type { CollectionEntry } from "astro:content";
+import { getCourseBySlug, getSectionsBySlug } from "@/content/_repository";
 import MdContents from "@/components/document/MdContents.astro";
 import { CANONICALS } from "@/config";
 import WithSideLayout from "@/components/layouts/WithSideLayout.astro";
-
-type Props = CollectionEntry<"course"> & {
-  slugs: { course_slug: string };
-};
+import SectionList from "./_components/SectionList.astro";
 
 const { course_slug } = Astro.params;
 if (!course_slug) return Astro.redirect("/");
 const course = await getCourseBySlug(course_slug);
 if (!course) return Astro.redirect("/");
 const { Content } = await course.render();
+const sections = await getSectionsBySlug(course_slug);
 ---
 
 <WithSideLayout
   title={course.data.title}
   canonical={CANONICALS.COURSE_DETAIL_TOP(course_slug)}
 >
-  <div slot="left">a</div>
+  <div slot="left">
+    <SectionList sections={sections} courseSlug={course_slug} />
+  </div>
   <h1>{course.data.title}</h1>
   <MdContents>
     <Content />
