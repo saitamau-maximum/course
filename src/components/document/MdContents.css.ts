@@ -232,12 +232,12 @@ globalStyle(`${styles.contents} .link-card .link-card__favicon`, {
 
 globalStyle(`${styles.contents} .link-card .link-card__domain`, {
   fontSize: vars.font.size.sm,
-  color: vars.color.gray[11],
+  color: vars.color.gray[10],
 });
 
 globalStyle(`${styles.contents} p`, {
   fontSize: vars.font.size.base,
-  color: vars.color.gray[12],
+  color: vars.color.gray[11],
 });
 
 globalStyle(`${styles.contents} ul`, {
@@ -262,7 +262,7 @@ globalStyle(`${styles.contents} ul li::before`, {
   content: '"-"',
   position: "absolute",
   left: `calc(-1 * ${vars.spacing[4]})`,
-  color: vars.color.gray[12],
+  color: vars.color.gray[11],
 });
 
 globalStyle(`${styles.contents} table`, {
@@ -273,7 +273,7 @@ globalStyle(`${styles.contents} table`, {
 globalStyle(`${styles.contents} table th`, {
   padding: vars.spacing[2],
   fontWeight: 700,
-  color: vars.color.gray[12],
+  color: vars.color.gray[11],
   borderBottom: `1px solid ${vars.color.gray[4]}`,
 });
 
