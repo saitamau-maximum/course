@@ -1,5 +1,5 @@
 ---
-import { getCourseBySlug, getSectionsBySlug } from "@/content/_repository";
+import { CourseRepository } from "@/content/_repository";
 import MdContents from "@/components/document/MdContents.astro";
 import { CANONICALS } from "@/config";
 import WithSideLayout from "@/components/layouts/WithSideLayout.astro";
@@ -9,10 +9,11 @@ import ContentWrapper from "./_components/ContentWrapper.astro";
 
 const { course_slug } = Astro.params;
 if (!course_slug) return Astro.redirect("/");
-const course = await getCourseBySlug(course_slug);
+const courseRepository = await CourseRepository.create();
+const course = courseRepository.getCourseBySlug(course_slug);
 if (!course) return Astro.redirect("/");
 const { Content } = await course.render();
-const sections = await getSectionsBySlug(course_slug);
+const sections = courseRepository.getSectionsBySlug(course_slug);
 ---
 
 <WithSideLayout

@@ -1,44 +1,46 @@
 import { CONTENT_INDEX_MATCHER, CONTENT_SECTION_MATCHER } from "@/config";
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 
-export const getIndexCourses = async () => {
-  const allSections = await getCollection("course");
-  const indexSections = allSections.filter((item) =>
-    CONTENT_INDEX_MATCHER.test(item.id)
-  );
-  return indexSections.map((item) => ({
-    ...item,
-    slug: item.id.replace(CONTENT_INDEX_MATCHER, "$2"),
-  }));
-};
+export class CourseRepository {
+  courses: CollectionEntry<"course">[];
 
-export const getSectionsBySlug = async (courseSlug: string) => {
-  const allCourseSections = await getCollection("course");
-  const sections = allCourseSections.filter(
-    (item) =>
-      item.id.replace(CONTENT_SECTION_MATCHER, "$2") === courseSlug &&
-      item.id.replace(CONTENT_SECTION_MATCHER, "$3") !== "index"
-  );
-  return sections;
-};
+  constructor(courses: CollectionEntry<"course">[]) {
+    this.courses = courses;
+  }
 
-export const getCourseBySlug = async (slug: string) => {
-  const allCourseSections = await getCollection("course");
-  const course = allCourseSections.find(
-    (item) => item.id.replace(CONTENT_INDEX_MATCHER, "$2") === slug
-  );
-  return course;
-};
+  static async create() {
+    const courses = await getCollection("course");
+    return new CourseRepository(courses);
+  }
 
-export const getSectionBySlug = async (
-  courseSlug: string,
-  sectionSlug: string
-) => {
-  const allCourseSections = await getCollection("course");
-  const section = allCourseSections.find(
-    (item) =>
-      item.id.replace(CONTENT_SECTION_MATCHER, "$2") === courseSlug &&
-      item.id.replace(CONTENT_SECTION_MATCHER, "$3") === sectionSlug
-  );
-  return section;
-};
+  getCourseBySlug(slug: string) {
+    return this.courses.find(
+      (item) => item.id.replace(CONTENT_INDEX_MATCHER, "$2") === slug
+    );
+  }
+
+  getSectionsBySlug(slug: string) {
+    return this.courses.filter(
+      (item) =>
+        item.id.replace(CONTENT_SECTION_MATCHER, "$2") === slug &&
+        item.id.replace(CONTENT_SECTION_MATCHER, "$3") !== "index"
+    );
+  }
+
+  getSectionBySlug(courseSlug: string, sectionSlug: string) {
+    return this.courses.find(
+      (item) =>
+        item.id.replace(CONTENT_SECTION_MATCHER, "$2") === courseSlug &&
+        item.id.replace(CONTENT_SECTION_MATCHER, "$3") === sectionSlug
+    );
+  }
+
+  getIndexCourses() {
+    return this.courses
+      .filter((item) => CONTENT_INDEX_MATCHER.test(item.id))
+      .map((item) => ({
+        ...item,
+        slug: item.id.replace(CONTENT_INDEX_MATCHER, "$2"),
+      }));
+  }
+}

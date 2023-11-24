@@ -382,7 +382,7 @@ globalStyle(`${styles.contents} .code-block`, {
 
 globalStyle(`${styles.contents} .code-block pre`, {
   border: `1px solid ${vars.color.gray[4]}`,
-  background: "none !important",
+  background: vars.color.gray[1],
   padding: vars.spacing[4],
   borderRadius: vars.spacing[2],
   overflowX: "auto",

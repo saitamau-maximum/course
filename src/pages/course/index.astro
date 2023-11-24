@@ -1,9 +1,10 @@
 ---
 import BaseLayout from "@/components/layouts/BaseLayout.astro";
-import { getIndexCourses } from "@/content/_repository";
+import { CourseRepository } from "@/content/_repository";
 import { CANONICALS, CONTENT_INDEX_MATCHER } from "@/config";
 
-const course = await getIndexCourses();
+const courseRepository = await CourseRepository.create();
+const course = courseRepository.getIndexCourses();
 ---
 
 <BaseLayout title="Course 一覧" canonical={CANONICALS.COURSE}>
