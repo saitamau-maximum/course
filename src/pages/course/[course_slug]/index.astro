@@ -4,6 +4,8 @@ import MdContents from "@/components/document/MdContents.astro";
 import { CANONICALS } from "@/config";
 import WithSideLayout from "@/components/layouts/WithSideLayout.astro";
 import SectionList from "./_components/SectionList.astro";
+import SectionTitle from "./_components/SectionTitle.astro";
+import ContentWrapper from "./_components/ContentWrapper.astro";
 
 const { course_slug } = Astro.params;
 if (!course_slug) return Astro.redirect("/");
@@ -18,10 +20,12 @@ const sections = await getSectionsBySlug(course_slug);
   canonical={CANONICALS.COURSE_DETAIL_TOP(course_slug)}
 >
   <div slot="left">
+    <SectionTitle title={course.data.title} courseSlug={course_slug} />
     <SectionList sections={sections} courseSlug={course_slug} />
   </div>
-  <h1>{course.data.title}</h1>
-  <MdContents>
-    <Content />
-  </MdContents>
+  <ContentWrapper title={course.data.title}>
+    <MdContents>
+      <Content />
+    </MdContents>
+  </ContentWrapper>
 </WithSideLayout>

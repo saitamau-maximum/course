@@ -1,0 +1,16 @@
+---
+import { styles } from "./SectionTitle.css";
+
+interface Props {
+  title: string;
+  courseSlug: string;
+}
+
+const { title, courseSlug } = Astro.props;
+---
+
+<div class={styles.container}>
+  <a href={`/course/${courseSlug}`} class={styles.titleLink}>
+    {title}
+  </a>
+</div>

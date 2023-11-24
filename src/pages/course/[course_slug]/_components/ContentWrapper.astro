@@ -1,0 +1,16 @@
+---
+import { styles } from "./ContentWrapper.css";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<div class={styles.container}>
+  <div class={styles.meta}>
+    <h1 class={styles.title}>{title}</h1>
+  </div>
+  <slot />
+</div>
