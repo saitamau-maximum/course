@@ -19,11 +19,14 @@ const removeCourseFromSlug = (slug: string) => {
 const url = Astro.url;
 const getSectionLink = (sectionSlug: string) =>
   CANONICALS.COURSE_DETAIL(courseSlug, removeCourseFromSlug(sectionSlug));
+const sortedSections = sections.sort(
+  (a, b) => (a.data.order || 0) - (b.data.order || 0)
+);
 ---
 
 <div class={styles.container}>
   {
-    sections.map((section, i) => (
+    sortedSections.map((section, i) => (
       <a
         href={getSectionLink(section.slug)}
         class={clsx(
