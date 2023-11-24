@@ -14,6 +14,7 @@ export const styles = {
     position: "fixed",
     top: 0,
     left: 0,
+    borderRight: `1px solid ${vars.color.gray[4]}`,
   }),
   footer: style({
     width: "100%",
