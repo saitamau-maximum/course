@@ -1,6 +1,7 @@
 import { defineConfig } from "astro/config";
 import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 import cloudflare from "@astrojs/cloudflare";
+import remarkSlug from "remark-slug";
 import rehypeCodeBlockCopy from "./src/libs/rehype-code-block-copy";
 import rehypeHeadLinker from "./src/libs/rehype-head-linker";
 import rehypeAnnotationBlock from "./src/libs/rehype-annotation-block";
@@ -15,6 +16,7 @@ export default defineConfig({
   output: "server",
   markdown: {
     syntaxHighlight: "prism",
+    remarkPlugins: [remarkSlug],
     rehypePlugins: [
       rehypeCodeBlockCopy,
       rehypeHeadLinker,
