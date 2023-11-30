@@ -5,7 +5,7 @@ export const styles = {
   container: style({
     width: constants.size.leftPanelWidth,
     height: "100vh",
-    background: vars.color.gray[1],
+    background: vars.color.gray[2],
     flexShrink: 0,
     display: "flex",
     flexDirection: "column",
